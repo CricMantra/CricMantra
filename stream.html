@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TG - @CricMantraHd</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .jwplayer {
+      position: absolute !important;
+    }
+
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 100%;
+      max-height: 100%;
+    }
+
+    #popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+    }
+
+    .popup-content h2 {
+      margin: 0 0 10px;
+      color: #00aaff;
+    }
+
+    .popup-content p {
+      margin: 0 0 20px;
+    }
+
+    .popup-content button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .popup-content .join-btn {
+      background-color: #008fd6;
+      color: white;
+    }
+
+    .popup-content .close-btn {
+      background-color: #555;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="jwplayerDiv"></div>
+  <script>
+    // Function to decode the query parameter using the substitution cipher
+    function decodeCipher(input) {
+      const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+      const reverseAlphabet = alphabet.split('').reverse().join(''); // Reverse alphabet
+
+      return input
+        .split('')
+        .map(char => {
+          const isUpperCase = char === char.toUpperCase();
+          const lowerChar = char.toLowerCase();
+
+          if (reverseAlphabet.includes(lowerChar)) {
+            const decodedChar = alphabet[reverseAlphabet.indexOf(lowerChar)];
+            return isUpperCase ? decodedChar.toUpperCase() : decodedChar;
+          }
+
+          return char; // Keep non-alphabet characters unchanged
+        })
+        .join('');
+    }
+
+    // Function to get query parameter by name
+    function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search); // Parse query string
+      return urlParams.get(name); // Get the value of the specified parameter
+    }
+
+    // Get the encoded file location from the query string
+    const encodedFileToPlay = getQueryParameter('q');
+
+    // Redirect if no file is specified
+    if (!encodedFileToPlay) {
+      window.location.href = "https://t.me/axtream_bingewav";
+    } else {
+      // Decode the file location
+      const fileToPlay = decodeCipher(encodedFileToPlay);
+
+      // Initialize JW Player
+      jwplayer("jwplayerDiv").setup({
+        file: fileToPlay,
+        autostart: true,
+        stretching: "uniform",
+        width: "100%",
+        type: "dash",
+      });
+    }
+
+    // Close popup function
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'none';
+    }
+  </script>
+
+  <div id="popup">
+    <div class="popup-content">
+      <h2>Support Us!</h2>
+      <p>Join Our Telegram Channel @CricMantraHd</p>
+      <button class="join-btn" onclick="window.open('https://t.me/+kfJZ4exLottkOTY1', '_blank')">Join Now</button>
+      <button class="close-btn" onclick="closePopup()">Already Joined</button>
+    </div>
+  </div>
+
+<script>
+        // Show the alert
+        if (confirm("Join Our Telegram Channel @CricMantraHd")) {
+            // Redirect to the Telegram channel if 'OK' is clicked
+            window.location.href = "https://t.me/+kfJZ4exLottkOTY1";
+        } else {
+            // Close the alert if 'Cancel' is clicked (do nothing)
+        }
+    </script>
+</body>
+</html>
